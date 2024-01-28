@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import { ModalProvider } from "@/providers/modal-provider";
+import { ToasterProvider } from "@/providers/toast-provider";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,16 +12,18 @@ export const metadata: Metadata = {
   description: "By Sara Öhman",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentUser = await getCurrentUser()
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Navbar /> */}
-        <ModalProvider />
+        <Navbar currentUser={currentUser} />
+        <ToasterProvider />
         {children}
       </body>
     </html>
