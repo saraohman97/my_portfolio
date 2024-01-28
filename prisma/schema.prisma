@@ -38,3 +38,38 @@ model Account {
 
   @@unique([provider, providerAccountId])
 }
+
+model Post {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String 
+  description String
+  text String
+  favorite Boolean
+  images Image[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  categories Category[] @relation("ArticleToCategory")
+}
+
+model Category {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  postId String @db.ObjectId
+  post Post @relation("ArticleToCategory", fields: [postId], references: [id])
+  
+  @@index([postId])
+}
+
+model Image {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  postId String @db.ObjectId
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  url String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([postId])
+}
