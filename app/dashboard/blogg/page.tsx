@@ -1,31 +1,28 @@
-"use client";
 
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/heading";
-import { Plus } from "lucide-react";
-import BlogClient from "./(components)/client";
+import prismadb from "@/lib/prismadb";
+import { format } from 'date-fns'
+import { TablePost } from "./(components)/columns";
+import { BlogClient } from "./(components)/client";
 
-const BlogPage = () => {
-  const router = useRouter();
+const BlogPage = async () => {
+
+  const posts = await prismadb.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  const formattedPosts: TablePost[] = posts.map((item) => ({
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    favorite: item.favorite,
+    createdAt: format(item.createdAt, 'MMMM do, yyyy')
+  }))
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full text-center">
-        <Heading
-          title="Blogg"
-          description="Här hittar du en lista av alla blogginlägg."
-        />
-        <Button
-          onClick={() => router.push("/dashboard/blogg/ny")}
-          className="self-end"
-        >
-          <Plus className="mr-2" /> Ny post
-        </Button>
-      </div>
-      <div>
-        <BlogClient />
-      </div>
+        <BlogClient data={formattedPosts} />
     </>
   );
 };

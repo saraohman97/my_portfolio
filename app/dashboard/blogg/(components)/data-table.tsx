@@ -51,10 +51,10 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter title..."
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -111,7 +111,7 @@ export function DataTable<TData, TValue>({
       </div>
 
       <div className="flex items-center justify-between">
-        <Button variant='default'>Delete all</Button>
+        <Button variant='secondary'>Delete all</Button>
         <div className="flex items-center justify-end space-x-2 py-4">
           <Button
             variant="outline"
