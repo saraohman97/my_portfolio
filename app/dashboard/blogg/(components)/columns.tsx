@@ -10,7 +10,7 @@ export type TablePost = {
   title: string;
   description: string;
   favorite: boolean;
-  images: any[];
+  createdAt: string;
 };
 
 export const columns: ColumnDef<TablePost>[] = [
@@ -25,6 +25,10 @@ export const columns: ColumnDef<TablePost>[] = [
   {
     accessorKey: "favorite",
     header: "Favorit",
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Datum skapat",
   },
   {
     id: "actions",

@@ -23,7 +23,7 @@ const BlogPage = () => {
           <Plus className="mr-2" /> Ny post
         </Button>
       </div>
-      <div className="border w-full my-4">
+      <div>
         <BlogClient />
       </div>
     </>
