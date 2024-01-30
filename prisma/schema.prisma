@@ -33,7 +33,6 @@ model Account {
   scope String?
   id_token String? @db.String
   session_state String?
-
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
@@ -45,31 +44,23 @@ model Post {
   description String
   text String
   favorite Boolean
-  images Image[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  categories Category[] @relation("ArticleToCategory")
+  images Image[]
+  categories Category[]
 }
 
 model Category {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   postId String @db.ObjectId
-  post Post @relation("ArticleToCategory", fields: [postId], references: [id])
-  
-  @@index([postId])
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 model Image {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  url String
   postId String @db.ObjectId
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
-  url String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([postId])
 }

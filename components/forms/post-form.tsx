@@ -37,23 +37,15 @@ const formSchema = z.object({
 
 type PostFormValues = z.infer<typeof formSchema>;
 
-interface PostFormProps {
-  initialData: Post | null;
-}
 
-const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
+const PostForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
-  const title = initialData ? "Updatera post" : "Skapa post";
-  const description = initialData ? "Updatera post" : "Skapa post";
-  const toastMessage = initialData ? "Post uppdaterat" : "Post skapat";
-  const action = initialData ? "Spara ändringarna" : "Skapa";
 
   // 1. Define your form.
   const form = useForm<PostFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData || {
+    defaultValues: {
       title: "",
       description: "",
       text: "",
@@ -79,7 +71,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <Heading title={title} description={description} />
+        <Heading title='Ny post' description='Ny post' />
         <Button variant="link" className="gap-2">
           <MoveLeft />
           Tillbaka
@@ -160,7 +152,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
                 />
               </div>
 
-              <Button type="submit">{action}</Button>
+              <Button type="submit">Ladda upp</Button>
             </form>
           </Form>
         </div>

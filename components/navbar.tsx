@@ -21,7 +21,6 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  console.log({currentUser})
   const [open, setOpen] = useState(false);
   const toggleModal = () => {
     open ? setOpen(false) : setOpen(true);
