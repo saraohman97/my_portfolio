@@ -20,14 +20,13 @@ export async function POST(
                 description,
                 text,
                 favorite,
-                images
-                // images: {
-                //     createMany: {
-                //       data: [
-                //         ...images.map((image: { url: string }) => image),
-                //       ],
-                //     },
-                // }
+                images: {
+                    createMany: {
+                      data: [
+                        ...images.map((image: { url: string }) => image),
+                      ],
+                    },
+                }
             }
         })
         return NextResponse.json(post)

@@ -23,6 +23,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import ImageUpload from "@/components/ui/image-upload";
+import { Image, Post } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
@@ -32,24 +33,38 @@ const formSchema = z.object({
   images: z.object({ url: z.string() }).array(),
 });
 
-const BlogPage = () => {
+interface PostFormProps {
+  initialData: Post & {
+    images: Image[]
+  } | null;
+}
+
+type PostFormValues = z.infer<typeof formSchema>
+
+const BlogPage: React.FC<PostFormProps> = ({
+  initialData
+}) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
+  const defaultValues = initialData ? {
+    ...initialData
+  } : {
+    title: "",
+    description: "",
+    text: "",
+    favorite: false,
+    images: []
+  }
+
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<PostFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      text: "",
-      favorite: false,
-      images: [],
-    },
+    defaultValues
   });
 
   // 2. Define a submit handler.
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: PostFormValues) {
     console.log("ny post:", data);
 
     setIsLoading(true);
@@ -57,7 +72,7 @@ const BlogPage = () => {
       .post("/api/post", data)
       .then(() => {
         toast.success("Product created.");
-        router.push("/dashboard");
+        router.push("/dashboard/blogg");
         router.refresh();
       })
       .catch((error) => {
