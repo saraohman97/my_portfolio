@@ -1,11 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import { Plus } from "lucide-react";
-import { useRouter } from "next/navigation";
+import BlogClient from "./(components)/client";
 
-const DashboardPage = () => {
+const BlogPage = () => {
   const router = useRouter();
 
   return (
@@ -15,14 +16,18 @@ const DashboardPage = () => {
           title="Blogg"
           description="Här hittar du en lista av alla blogginlägg."
         />
-        <Button onClick={() => router.push("/dashboard/ny")} className="self-end">
+        <Button
+          onClick={() => router.push("/dashboard/blogg/ny")}
+          className="self-end"
+        >
           <Plus className="mr-2" /> Ny post
         </Button>
       </div>
-
-      <div className="border w-full my-4">table here</div>
+      <div className="border w-full my-4">
+        <BlogClient />
+      </div>
     </>
   );
 };
 
-export default DashboardPage;
+export default BlogPage;

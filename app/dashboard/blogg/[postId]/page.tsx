@@ -78,7 +78,7 @@ const BlogPage = () => {
         />
         <Button
           variant="link"
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/dashboard/blogg")}
           className="self-end"
         >
           <IoIosArrowRoundBack size={24} className="mr-2" /> Gå tillbaka
