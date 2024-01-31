@@ -1,17 +1,10 @@
 import prismadb from "@/lib/prismadb";
+import qs from 'querystring'
+import { Post } from "@/types";
 
-export interface IPostParams {
-    searchTerm?: string | null;
-}
-
-export default async function getPosts(params: IPostParams) {
+export default async function getPosts() {
     try {
-        const { searchTerm} = params;
-        let searchString = searchTerm;
 
-        if(!searchTerm) {
-            searchString = ''
-        }
 
         let query: any = {}
 

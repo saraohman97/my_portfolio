@@ -8,3 +8,16 @@ export type SafeUser = Omit<
     updatedAt: string;
     emailVerified: string | null;
 };
+
+export interface Post {
+    id: string;
+    title: string;
+    description: string;
+    text: string;
+    favorite: boolean;
+    images: Image[]
+}
+export interface Image {
+    id: string;
+    url: string;
+}
