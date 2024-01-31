@@ -53,7 +53,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ toggleModal }) => {
 
       if (callback?.ok) {
         toggleModal();
-        router.push("/dashboard");
+        router.push("/dashboard/blogg");
         router.refresh();
         toast.success("Logged in");
       }

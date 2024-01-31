@@ -57,7 +57,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </Dialog> */}
 
           {currentUser ? (
-            <Button onClick={() => signOut()}>Logga ut</Button>
+            <>
+              <Link href="/dashboard/blogg">
+                <Button variant='link'>Dashboard</Button>
+              </Link>
+              <Button onClick={() => signOut()}>Logga ut</Button>
+            </>
           ) : (
             <Dialog open={open} onOpenChange={toggleModal}>
               <DialogTrigger asChild>
