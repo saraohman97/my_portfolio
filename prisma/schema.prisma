@@ -47,22 +47,34 @@ model Post {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  images Image[]
+  images     Image[]
+  categories String[]
   // categories Category[]
 }
+// type Category {
+//   id String
+//   name String
+// }
+
+model Category {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+}
+  // postId String @db.ObjectId
+  // post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
 // model Category {
 //   id   String @id @default(auto()) @map("_id") @db.ObjectId
 //   name String
-  // postId String @db.ObjectId
-  // post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+// postId String @db.ObjectId
+// post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 // }
 
 model Image {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  url       String
-  postId    String   @db.ObjectId
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  url    String
+  postId String @db.ObjectId
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   // createdAt DateTime @default(now())
   // updatedAt DateTime @updatedAt
 

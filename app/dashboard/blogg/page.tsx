@@ -17,7 +17,8 @@ const BlogPage = async () => {
     title: item.title,
     description: item.description,
     favorite: item.favorite,
-    createdAt: format(item.createdAt, 'MMMM do, yyyy')
+    createdAt: format(item.createdAt, 'MMMM do, yyyy'),
+    categories: item.categories
   }))
 
   return (

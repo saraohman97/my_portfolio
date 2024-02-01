@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,7 +18,6 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,42 +25,85 @@ import { Checkbox } from "@/components/ui/checkbox";
 import ImageUpload from "@/components/ui/image-upload";
 import { Image, Post } from "@prisma/client";
 
+const categories = [
+  {
+    id: "mongoDB",
+    name: "MongoDB",
+  },
+  {
+    id: "prisma",
+    name: "Prisma",
+  },
+  {
+    id: "shadcn",
+    name: "Shadcn-ui",
+  },
+  {
+    id: "mongoose",
+    name: "Mongoose",
+  },
+  {
+    id: "reactJS",
+    name: "ReactJS",
+  },
+  {
+    id: "nextJS",
+    name: "NextJS",
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind",
+  },
+  {
+    id: "mysql",
+    name: "MySQL",
+  },
+] as const;
+
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
   text: z.string(),
   favorite: z.boolean().default(false).optional(),
   images: z.object({ url: z.string() }).array(),
+  categories: z
+    .array(z.string())
+    .refine((value) => value.some((item) => item), {
+      message: "You have to select at least one item.",
+    }),
 });
 
 interface PostFormProps {
-  initialData: Post & {
-    images: Image[]
-  } | null;
+  initialData:
+    | (Post & {
+        images: Image[];
+      })
+    | null;
 }
 
-type PostFormValues = z.infer<typeof formSchema>
+type PostFormValues = z.infer<typeof formSchema>;
 
-const BlogPage: React.FC<PostFormProps> = ({
-  initialData
-}) => {
+const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const defaultValues = initialData ? {
-    ...initialData
-  } : {
-    title: "",
-    description: "",
-    text: "",
-    favorite: false,
-    images: []
-  }
+  const defaultValues = initialData
+    ? {
+        ...initialData,
+      }
+    : {
+        title: "",
+        description: "",
+        text: "",
+        favorite: false,
+        images: [],
+        categories: [],
+      };
 
   // 1. Define your form.
   const form = useForm<PostFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues
+    defaultValues,
   });
 
   // 2. Define a submit handler.
@@ -186,6 +229,59 @@ const BlogPage: React.FC<PostFormProps> = ({
                       }
                     />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="categories"
+              render={() => (
+                <FormItem>
+                  <div className="mb-4 mt-6">
+                    <FormLabel className="text-base">Kategorier</FormLabel>
+                    <FormDescription>
+                      Välj vilka kategorier som stämmer in på artikeln. 
+                    </FormDescription>
+                  </div>
+                  {categories &&
+                    categories.map((item: any) => (
+                      <FormField
+                        key={item.id}
+                        control={form.control}
+                        name="categories"
+                        render={({ field }) => {
+                          return (
+                            <FormItem
+                              key={item.id}
+                              className="flex flex-row items-start space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(item.id)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([
+                                          ...field.value,
+                                          item.id,
+                                        ])
+                                      : field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== item.id
+                                          )
+                                        );
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.name}
+                              </FormLabel>
+                            </FormItem>
+                          );
+                        }}
+                      />
+                    ))}
                   <FormMessage />
                 </FormItem>
               )}

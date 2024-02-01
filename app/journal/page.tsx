@@ -3,7 +3,6 @@ import Title from "@/components/ui/title";
 import prismadb from "@/lib/prismadb";
 import { format } from "date-fns";
 import Image from "next/image";
-import { Post } from "@/types";
 
 const JournalPage = async () => {
   const posts = await prismadb.post.findMany({
@@ -34,11 +33,17 @@ const JournalPage = async () => {
                 </div>
                 <div className="space-x-2 mt-4">
                   {/* collection */}
-                  <Badge>NextJS</Badge>
+                  {/* <Badge>NextJS</Badge>
                   <Badge>TypeScript</Badge>
                   <Badge>Prisma</Badge>
                   <Badge>MongoDB</Badge>
-                  <Badge>Tailwind / Shadcn-ui</Badge>
+                  <Badge>Tailwind / Shadcn-ui</Badge> */}
+                  {/* {article.categories && article.categories.map((category) => (
+                    <Badge key={category.id}>{category.name}</Badge>
+                  ))} */}
+                  {article.categories.map((cat) => (
+                  <Badge key={cat}>{cat}</Badge>
+                  ))}
                 </div>
                 <hr className="mt-5 mb-10" />
                 <p className="font-semibold">
@@ -64,11 +69,9 @@ const JournalPage = async () => {
               <h3 className="font-semibold text-lg pb-2">Kollektion</h3>
               {/* collection */}
               <div className="flex flex-wrap gap-2">
-                <Badge>NextJS</Badge>
-                <Badge>TypeScript</Badge>
-                <Badge>Prisma</Badge>
-                <Badge>MongoDB</Badge>
-                <Badge>Tailwind / Shadcn-ui</Badge>
+                {categories.map((item) => (
+                  <Badge key={item.id}>{item.name}</Badge>
+                ))}
               </div>
             </div>
             <hr className="my-6" />
@@ -96,3 +99,38 @@ const JournalPage = async () => {
 };
 
 export default JournalPage;
+
+const categories = [
+  {
+    id: "mongoDB",
+    name: "MongoDB",
+  },
+  {
+    id: "prisma",
+    name: "Prisma",
+  },
+  {
+    id: "shadcn",
+    name: "Shadcn-ui",
+  },
+  {
+    id: "mongoose",
+    name: "Mongoose",
+  },
+  {
+    id: "reactJS",
+    name: "ReactJS",
+  },
+  {
+    id: "nextJS",
+    name: "NextJS",
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind",
+  },
+  {
+    id: "mysql",
+    name: "MySQL",
+  },
+] as const;

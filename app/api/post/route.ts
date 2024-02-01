@@ -11,7 +11,8 @@ export async function POST(
             description,
             text,
             favorite,
-            images
+            images,
+            categories
         } = body;
     
         const post = await prismadb.post.create({
@@ -26,7 +27,8 @@ export async function POST(
                         ...images.map((image: { url: string }) => image),
                       ],
                     },
-                }
+                },
+                categories
             }
         })
         return NextResponse.json(post)
