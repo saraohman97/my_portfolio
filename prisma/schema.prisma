@@ -51,16 +51,36 @@ model Post {
   categories String[]
 }
 
+
+model Project {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images ProjectImage[]
+}
+
 model Category {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
 }
 
 model Image {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  url    String
-  postId String @db.ObjectId
-  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  url       String
+  postId    String  @db.ObjectId
+  post      Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@index([postId])
+}
+
+model ProjectImage {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  url       String
+  projectId String  @db.ObjectId
+  project  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([ projectId])
 }
