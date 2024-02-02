@@ -1,30 +1,30 @@
 
-// import prismadb from "@/lib/prismadb";
-// import { format } from 'date-fns'
-// import { TablePost } from "./(components)/columns";
-// import { BlogClient } from "./(components)/client";
+import prismadb from "@/lib/prismadb";
+import { format } from 'date-fns'
+import { TablePost } from "./(components)/columns";
+import { BlogClient } from "./(components)/client";
 
-// const BlogPage = async () => {
+const BlogPage = async () => {
 
-//   const posts = await prismadb.post.findMany({
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
+  const posts = await prismadb.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-//   const formattedPosts: TablePost[] = posts.map((item) => ({
-//     id: item.id,
-//     title: item.title,
-//     description: item.description,
-//     favorite: item.favorite,
-//     createdAt: format(item.createdAt, 'MMMM do, yyyy')
-//   }))
+  const formattedPosts: TablePost[] = posts.map((item) => ({
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    favorite: item.favorite,
+    createdAt: format(item.createdAt, 'MMMM do, yyyy')
+  }))
 
-//   return (
-//     <>
-//         <BlogClient data={formattedPosts} />
-//     </>
-//   );
-// };
+  return (
+    <>
+        <BlogClient data={formattedPosts} />
+    </>
+  );
+};
 
-// export default BlogPage;
+export default BlogPage;

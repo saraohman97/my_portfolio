@@ -19,7 +19,7 @@ export const BlogClient: React.FC<BlogClientProps> = ({ data }) => {
     <>
     <div className="flex flex-col items-center justify-center w-full text-center">
         <Heading
-          title="Blogg"
+          title="Journal"
           description="Här hittar du en lista av alla blogginlägg."
         />
         <Button

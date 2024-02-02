@@ -33,14 +33,6 @@ const JournalPage = async () => {
                 </div>
                 <div className="space-x-2 mt-4">
                   {/* collection */}
-                  {/* <Badge>NextJS</Badge>
-                  <Badge>TypeScript</Badge>
-                  <Badge>Prisma</Badge>
-                  <Badge>MongoDB</Badge>
-                  <Badge>Tailwind / Shadcn-ui</Badge> */}
-                  {/* {article.categories && article.categories.map((category) => (
-                    <Badge key={category.id}>{category.name}</Badge>
-                  ))} */}
                   {article.categories.map((cat) => (
                   <Badge key={cat}>{cat}</Badge>
                   ))}

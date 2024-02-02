@@ -14,7 +14,7 @@ const DashboardNavbar = () => {
   const routes = [
     {
       href: '/dashboard/blogg',
-      label: 'Blogg',
+      label: 'Journal',
       active: pathname === '/dashboard/blogg',
       icon: CiPen
     },
