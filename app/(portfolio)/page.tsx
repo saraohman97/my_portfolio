@@ -1,6 +1,7 @@
 import Image from "next/image";
 import prismadb from "@/lib/prismadb";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/footer";
 
 const HomeClient = async () => {
   const projects = await prismadb.project.findMany({
@@ -48,7 +49,8 @@ const HomeClient = async () => {
 
         <div className="grid grid-cols-2 gap-10">
           {projects?.map((project) => (
-            <a href="https://google.com" target="_blank" key={project.id} className="relative group cursor-pointer">
+            <div key={project.id}>
+            <a href={`https://${project.url}`} target="_blank" className="relative group cursor-pointer">
               <Image
                 src={project.images[0].url}
                 className="w-full group-hover:blur-sm shadow-xl max-h-[400px] object-cover"
@@ -57,14 +59,15 @@ const HomeClient = async () => {
                 alt={project.title}
               />
               <div className="invisible top-0 right-0 bottom-0 left-0 flex items-center justify-center group-hover:absolute group-hover:visible">
-                {/* <a href="https://google.com" target="_blank"> */}
                   <Button>Gå till webbsidan</Button>
-                {/* </a> */}
               </div>
             </a>
+            </div>
           ))}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
