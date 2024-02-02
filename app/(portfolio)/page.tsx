@@ -44,28 +44,34 @@ const HomeClient = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-10 h-full">
-        <div className="text-2xl">Projekt</div>
+      {projects.length && (
+        <div className="flex flex-col items-center gap-10 h-full">
+          <div className="text-2xl">Projekt</div>
 
-        <div className="grid grid-cols-2 gap-10">
-          {projects?.map((project) => (
-            <div key={project.id}>
-            <a href={`https://${project.url}`} target="_blank" className="relative group cursor-pointer">
-              <Image
-                src={project.images[0].url}
-                className="w-full group-hover:blur-sm shadow-xl max-h-[400px] object-cover"
-                width={400}
-                height={400}
-                alt={project.title}
-              />
-              <div className="invisible top-0 right-0 bottom-0 left-0 flex items-center justify-center group-hover:absolute group-hover:visible">
-                  <Button>Gå till webbsidan</Button>
+          <div className="grid grid-cols-2 gap-10">
+            {projects.map((project) => (
+              <div key={project.id}>
+                <a
+                  href={`https://${project.url}`}
+                  target="_blank"
+                  className="relative group cursor-pointer"
+                >
+                  <Image
+                    src={project.images[0].url}
+                    className="w-full group-hover:blur-sm shadow-xl max-h-[400px] object-cover"
+                    width={400}
+                    height={400}
+                    alt={project.title}
+                  />
+                  <div className="invisible top-0 right-0 bottom-0 left-0 flex items-center justify-center group-hover:absolute group-hover:visible">
+                    <Button>Gå till webbsidan</Button>
+                  </div>
+                </a>
               </div>
-            </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <Footer />
     </>

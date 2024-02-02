@@ -3,6 +3,7 @@ import Title from "@/components/ui/title";
 import prismadb from "@/lib/prismadb";
 import { format } from "date-fns";
 import Image from "next/image";
+import { TbMoodEmpty } from "react-icons/tb";
 
 const JournalPage = async () => {
   const posts = await prismadb.post.findMany({
@@ -22,7 +23,7 @@ const JournalPage = async () => {
         <div className="flex flex-row gap-20">
           <div className="w-2/3">
             {/* post */}
-            {posts.map((article) => (
+            {posts.length ? posts.map((article) => (
               <div key={article.id} className="mb-24">
                 <h2 className="text-4xl">{article.title}</h2>
                 <div className="flex items-center justify-between">
@@ -53,7 +54,9 @@ const JournalPage = async () => {
                   className="w-auto h-full object-contain m-10 mt-0 shadow"
                 />
               </div>
-            ))}
+            )) : (
+              <p className="flex gap-2">Inga inlägg än <TbMoodEmpty size={24} /></p>
+            )}
           </div>
 
           <div className="w-1/3 bg-slate-100 p-10 rounded h-fit">
