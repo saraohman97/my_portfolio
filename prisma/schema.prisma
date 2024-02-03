@@ -47,8 +47,22 @@ model Post {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  NextJS Boolean
+  ReactJS Boolean
+  VanillaJS Boolean
+
+  MongoDB Boolean
+  MySQL Boolean
+
+  Prisma Boolean
+  Mongoose Boolean
+
+  Tailwind Boolean
+  Shadcn Boolean
+  VanillaCSS Boolean
+
   images     Image[]
-  categories String[]
+  // categories String[]
 }
 
 

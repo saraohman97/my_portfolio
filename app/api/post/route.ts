@@ -12,7 +12,16 @@ export async function POST(
             text,
             favorite,
             images,
-            categories
+            NextJS,
+            ReactJS,
+            VanillaJS,
+            MongoDB,
+            MySQL,
+            Prisma,
+            Mongoose,
+            Shadcn, 
+            Tailwind,
+            VanillaCSS,
         } = body;
     
         const post = await prismadb.post.create({
@@ -28,7 +37,16 @@ export async function POST(
                       ],
                     },
                 },
-                categories
+                NextJS,
+                ReactJS,
+                VanillaJS,
+                MongoDB,
+                MySQL,
+                Prisma,
+                Mongoose,
+                Shadcn, 
+                Tailwind,
+                VanillaCSS
             }
         })
         return NextResponse.json(post)

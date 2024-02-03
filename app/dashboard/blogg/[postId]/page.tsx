@@ -27,36 +27,34 @@ import { Image, Post } from "@prisma/client";
 
 const categories = [
   {
-    id: "mongoDB",
-    name: "MongoDB",
-  },
-  {
-    id: "prisma",
-    name: "Prisma",
-  },
-  {
-    id: "shadcn",
-    name: "Shadcn-ui",
-  },
-  {
-    id: "mongoose",
-    name: "Mongoose",
-  },
-  {
-    id: "reactJS",
-    name: "ReactJS",
-  },
-  {
-    id: "nextJS",
     name: "NextJS",
   },
   {
-    id: "tailwind",
+    name: "ReactJS",
+  },
+  {
+    name: "VanillaJS",
+  },
+  {
+    name: "MongoDB",
+  },
+  {
+    name: "MySQL",
+  },
+  {
+    name: "Prisma",
+  },
+  {
+    name: "Mongoose",
+  },
+  {
+    name: "Shadcn",
+  },
+  {
     name: "Tailwind",
   },
   {
-    id: "mysql",
-    name: "MySQL",
+    name: "VanillaCSS",
   },
 ] as const;
 
@@ -66,11 +64,17 @@ const formSchema = z.object({
   text: z.string(),
   favorite: z.boolean().default(false).optional(),
   images: z.object({ url: z.string() }).array(),
-  categories: z
-    .array(z.string())
-    .refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
-    }),
+
+  NextJS: z.boolean().default(false).optional(),
+  ReactJS: z.boolean().default(false).optional(),
+  VanillaJS: z.boolean().default(false).optional(),
+  MongoDB: z.boolean().default(false).optional(),
+  MySQL: z.boolean().default(false).optional(),
+  Prisma: z.boolean().default(false).optional(),
+  Mongoose: z.boolean().default(false).optional(),
+  Shadcn: z.boolean().default(false).optional(),
+  Tailwind: z.boolean().default(false).optional(),
+  VanillaCSS: z.boolean().default(false).optional(),
 });
 
 interface PostFormProps {
@@ -98,6 +102,16 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
         favorite: false,
         images: [],
         categories: [],
+        NextJS: false,
+        ReactJS: false,
+        VanillaJS: false,
+        MongoDB: false,
+        MySQL: false,
+        Prisma: false,
+        Mongoose: false,
+        Shadcn: false,
+        Tailwind: false,
+        VanillaCSS: false,
       };
 
   // 1. Define your form.
@@ -160,7 +174,6 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="description"
@@ -174,7 +187,6 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="text"
@@ -188,7 +200,6 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="favorite"
@@ -206,7 +217,176 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-
+            <FormField
+              control={form.control}
+              name="NextJS"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">NextJS</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="ReactJS"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">ReactJS</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="VanillaJS"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">VanillaJS</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="MongoDB"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">MongoDB</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="MySQL"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">MySQL</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />{" "}
+            <FormField
+              control={form.control}
+              name="Prisma"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">Prisma</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />{" "}
+            <FormField
+              control={form.control}
+              name="Mongoose"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">Mongoose</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="Shadcn"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">Shadcn</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="Tailwind"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">Tailwind</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="VanillaCSS"
+              render={({ field }) => (
+                <FormItem className="flex items-center space-x-4 py-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormLabel className="pb-2">VanillaCSS</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="images"
@@ -233,60 +413,6 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-
-            <FormField
-              control={form.control}
-              name="categories"
-              render={() => (
-                <FormItem>
-                  <div className="mb-4 mt-6">
-                    <FormLabel className="text-base">Kategorier</FormLabel>
-                    <FormDescription>
-                      Välj vilka kategorier som stämmer in på artikeln. 
-                    </FormDescription>
-                  </div>
-                  {categories &&
-                    categories.map((item: any) => (
-                      <FormField
-                        key={item.id}
-                        control={form.control}
-                        name="categories"
-                        render={({ field }) => {
-                          return (
-                            <FormItem
-                              key={item.id}
-                              className="flex flex-row items-start space-x-3 space-y-0"
-                            >
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes(item.id)}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([
-                                          ...field.value,
-                                          item.id,
-                                        ])
-                                      : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== item.id
-                                          )
-                                        );
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                {item.name}
-                              </FormLabel>
-                            </FormItem>
-                          );
-                        }}
-                      />
-                    ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             <div className="pt-6 space-x-2 flex items-center justify-end w-full">
               <Button type="submit">Skicka</Button>
             </div>

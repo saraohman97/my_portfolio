@@ -15,7 +15,20 @@ export interface Post {
     description: string;
     text: string;
     favorite: boolean;
-    images: Image[]
+    images: Image[];
+    // categories: string[];
+    createdAt: Date;
+
+    NextJS: boolean;
+    ReactJS: boolean;
+    VanillaJS: boolean;
+    MongoDB: boolean;
+    MySQL: boolean;
+    Prisma: boolean;
+    Mongoose: boolean;
+    Shadcn: boolean;
+    Tailwind: boolean;
+    VanillaCSS: boolean;
 }
 export interface Image {
     id: string;
