@@ -11,7 +11,7 @@ export type TablePost = {
   title: string;
   description: string;
   favorite: boolean;
-  createdAt: Date;
+  // createdAt: Date;
   imageDescription: string;
   preText: string;
   NextJS: boolean;
@@ -43,15 +43,15 @@ export const columns: ColumnDef<TablePost>[] = [
   //   accessorKey: "createdAt",
   //   header: "Datum skapat",
   // },
-  {
-    accessorKey: "createdAt",
-    header: "Date",
-    cell: ({ row }) => (
-      <div className="flex items-center">
-        {format(row.original.createdAt, "MMMM do, yyyy")}
-      </div>
-    )
-  },
+  // {
+  //   accessorKey: "createdAt",
+  //   header: "Date",
+  //   cell: ({ row }) => (
+  //     <div className="flex items-center">
+  //       {format(row.original.createdAt, "MMMM do, yyyy")}
+  //     </div>
+  //   )
+  // },
   {
     id: "actions",
     cell: ({ row }) => <CellAction data={row.original} />,
