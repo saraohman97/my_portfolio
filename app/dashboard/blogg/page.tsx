@@ -10,8 +10,8 @@ const BlogPage = async () => {
     },
   });
 
-  const formattedPosts: TablePost[] = posts.map(
-    (item): TablePost => ({
+  const formattedPosts = posts.map(
+    (item) => ({
       id: item.id,
       title: item.title,
       description: item.description,
