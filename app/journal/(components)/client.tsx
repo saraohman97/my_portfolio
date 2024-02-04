@@ -6,7 +6,7 @@ import { TbMoodEmpty } from "react-icons/tb";
 import PostItem from "./post-item";
 import { Post } from "@/types";
 import { useState } from "react";
-import {sv} from 'date-fns/locale'
+import { sv } from "date-fns/locale";
 
 interface JournalClientProps {
   posts: Post[];
@@ -185,7 +185,7 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
         <h1 className="text-center py-20 text-5xl my-10">Journal</h1>
 
         <div className="flex flex-row gap-20">
-            <div className="w-2/3">
+          <div className="w-2/3">
             {/* post */}
             {!posts.length && (
               <p className="flex gap-2">
@@ -279,7 +279,8 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
                       {fav.favorite && fav.title}
                     </p>
                     <p className="text-sm text-slate-400">
-                      {fav.favorite && format(fav.createdAt, "PPP", { locale: sv })}
+                      {fav.favorite &&
+                        format(fav.createdAt, "PPP", { locale: sv })}
                     </p>
                   </div>
                 ))}
