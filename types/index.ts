@@ -37,3 +37,16 @@ export interface Image {
     id: string;
     url: string;
 }
+
+export interface Project {
+    id: string;
+    title: string;
+    url: string;
+    images: ProjectImage[]
+}
+
+export interface ProjectImage {
+    id: string;
+    title: string;
+    images: ProjectImage[]
+}
