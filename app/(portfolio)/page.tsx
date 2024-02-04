@@ -49,7 +49,7 @@ const HomeClient = async () => {
           <div className="text-2xl">Projekt</div>
 
           <div className="grid grid-cols-2 gap-10">
-            {projects.map((project) => (
+            { projects && projects.map((project: any) => (
               <div key={project.id}>
                 <a
                   href={`https://${project.url}`}
