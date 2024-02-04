@@ -11,6 +11,18 @@ export type TablePost = {
   description: string;
   favorite: boolean;
   createdAt: string;
+  imageDescription: string;
+  preText: string;
+  NextJS: boolean;
+  ReactJS: boolean;
+  VanillaJS: boolean;
+  MongoDB: boolean;
+  MySQL: boolean;
+  Prisma: boolean;
+  Mongoose: boolean;
+  Shadcn: boolean;
+  Tailwind: boolean;
+  VanillaCSS: boolean;
 };
 
 export const columns: ColumnDef<TablePost>[] = [
