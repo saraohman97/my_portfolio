@@ -20,7 +20,6 @@ import toast from "react-hot-toast";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import ImageUpload from "@/components/ui/image-upload";
-import { Project, ProjectImage } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
@@ -28,29 +27,17 @@ const formSchema = z.object({
   images: z.object({ url: z.string() }).array(),
 });
 
-interface ProjectFormProps {
-  initialData:
-    Project & {
-        images: ProjectImage[];
-      }
-    | null;
-}
-
 type ProjectFormValues = z.infer<typeof formSchema>;
 
-const ProjectPage: React.FC<ProjectFormProps> = ({ initialData }) => {
+const ProjectPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const defaultValues = initialData
-    ? {
-        ...initialData,
-      }
-    : {
-        title: "",
-        url: "",
-        images: []
-      };
+  const defaultValues = {
+    title: "",
+    url: "",
+    images: [],
+  };
 
   // 1. Define your form.
   const form = useForm<ProjectFormValues>({

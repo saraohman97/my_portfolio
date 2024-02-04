@@ -22,13 +22,12 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import ImageUpload from "@/components/ui/image-upload";
-import { Image, Post } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
   imageDescription: z.string(),
-  preText: z.string(),
+  preText: z.string().optional(),
   text: z.string(),
   favorite: z.boolean().default(false).optional(),
   images: z.object({ url: z.string() }).array(),
@@ -45,43 +44,31 @@ const formSchema = z.object({
   VanillaCSS: z.boolean().default(false).optional(),
 });
 
-interface PostFormProps {
-  initialData:
-    | (Post & {
-        images: Image[];
-      })
-    | null;
-}
-
 type PostFormValues = z.infer<typeof formSchema>;
 
-const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
+const BlogPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const defaultValues = initialData
-    ? {
-        ...initialData,
-      }
-    : {
-        title: "",
-        description: "",
-        imageDescription: "",
-        preText: "",
-        text: "",
-        favorite: false,
-        images: [],
-        NextJS: false,
-        ReactJS: false,
-        VanillaJS: false,
-        MongoDB: false,
-        MySQL: false,
-        Prisma: false,
-        Mongoose: false,
-        Shadcn: false,
-        Tailwind: false,
-        VanillaCSS: false,
-      };
+  const defaultValues = {
+    title: "",
+    description: "",
+    imageDescription: "",
+    preText: "",
+    text: "",
+    favorite: false,
+    images: [],
+    NextJS: false,
+    ReactJS: false,
+    VanillaJS: false,
+    MongoDB: false,
+    MySQL: false,
+    Prisma: false,
+    Mongoose: false,
+    Shadcn: false,
+    Tailwind: false,
+    VanillaCSS: false,
+  };
 
   // 1. Define your form.
   const form = useForm<PostFormValues>({

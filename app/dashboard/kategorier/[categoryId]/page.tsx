@@ -19,37 +19,29 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import ImageUpload from "@/components/ui/image-upload";
-import { Category } from "@prisma/client";
 
 const formSchema = z.object({
   name: z.string(),
 });
 
-interface CategoryFormProps {
-  initialData: Category | null;
-}
+// interface CategoryFormProps {
+//   initialData: Category | null;
+// }
 
-type CategoryFormValues = z.infer<typeof formSchema>
+type CategoryFormValues = z.infer<typeof formSchema>;
 
-const CategoryPage: React.FC<CategoryFormProps> = ({
-  initialData
-}) => {
+const CategoryPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const defaultValues = initialData ? {
-    ...initialData
-  } : {
-    name: ""
-  }
+  const defaultValues = {
+    name: "",
+  };
 
   // 1. Define your form.
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues
+    defaultValues,
   });
 
   // 2. Define a submit handler.
