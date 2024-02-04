@@ -11,15 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
 
 interface CellActionProps {
   data: TablePost;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
-  const router = useRouter();
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
