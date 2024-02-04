@@ -12,6 +12,11 @@ const HomeClient = async () => {
     },
   });
 
+  // const formattedPosts: TablePost[] = projects.map((item) => ({
+  //   id: item.id,
+  //   title: item.title,
+  // }))
+
   return (
     <>
       <PortfolioForm data={projects} />

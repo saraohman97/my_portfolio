@@ -38,14 +38,14 @@ export interface Image {
     url: string;
 }
 
-export interface Project {
+export type Project = {
     id: string;
     title: string;
     url: string;
     images: ProjectImage[]
 }
 
-export interface ProjectImage {
+export type ProjectImage = {
     id: string;
     url: string;
 }

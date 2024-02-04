@@ -8,7 +8,7 @@ interface PortfolioItemProps {
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ project }) => {
   return (
-    <div key={project.id}>
+    <div>
       <a
         href={`https://${project.url}`}
         target="_blank"
