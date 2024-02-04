@@ -1,7 +1,6 @@
 import prismadb from "@/lib/prismadb";
 import JournalClient from "./(components)/client";
 
-
 const JournalPage = async () => {
   const posts = await prismadb.post.findMany({
     include: {
@@ -12,9 +11,7 @@ const JournalPage = async () => {
     },
   });
 
-  return (
-    <JournalClient posts={posts} />
-  );
+  return <JournalClient posts={posts} />;
 };
 
 export default JournalPage;

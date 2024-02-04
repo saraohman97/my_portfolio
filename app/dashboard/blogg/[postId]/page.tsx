@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,39 +23,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import ImageUpload from "@/components/ui/image-upload";
 import { Image, Post } from "@prisma/client";
-
-const categories = [
-  {
-    name: "NextJS",
-  },
-  {
-    name: "ReactJS",
-  },
-  {
-    name: "VanillaJS",
-  },
-  {
-    name: "MongoDB",
-  },
-  {
-    name: "MySQL",
-  },
-  {
-    name: "Prisma",
-  },
-  {
-    name: "Mongoose",
-  },
-  {
-    name: "Shadcn",
-  },
-  {
-    name: "Tailwind",
-  },
-  {
-    name: "VanillaCSS",
-  },
-] as const;
 
 const formSchema = z.object({
   title: z.string(),
@@ -101,7 +67,6 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
         text: "",
         favorite: false,
         images: [],
-        categories: [],
         NextJS: false,
         ReactJS: false,
         VanillaJS: false,
@@ -217,176 +182,181 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="NextJS"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">NextJS</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="ReactJS"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">ReactJS</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="VanillaJS"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">VanillaJS</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="MongoDB"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">MongoDB</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="MySQL"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">MySQL</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />{" "}
-            <FormField
-              control={form.control}
-              name="Prisma"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">Prisma</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />{" "}
-            <FormField
-              control={form.control}
-              name="Mongoose"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">Mongoose</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Shadcn"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">Shadcn</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="Tailwind"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">Tailwind</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="VanillaCSS"
-              render={({ field }) => (
-                <FormItem className="flex items-center space-x-4 py-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      //ts-ignore
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormLabel className="pb-2">VanillaCSS</FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+
+            <p className="text-slate-400 text-sm">Kategorier</p>
+            <div className="grid grid-cols-2 border rounded pl-6 py-6 mb-6">
+              <FormField
+                control={form.control}
+                name="NextJS"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">NextJS</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="ReactJS"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">ReactJS</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="VanillaJS"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">VanillaJS</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="MongoDB"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">MongoDB</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="MySQL"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">MySQL</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />{" "}
+              <FormField
+                control={form.control}
+                name="Prisma"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">Prisma</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />{" "}
+              <FormField
+                control={form.control}
+                name="Mongoose"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">Mongoose</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Shadcn"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">Shadcn</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="Tailwind"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">Tailwind</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="VanillaCSS"
+                render={({ field }) => (
+                  <FormItem className="flex items-center space-x-4 py-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        //ts-ignore
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="pb-2">VanillaCSS</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
             <FormField
               control={form.control}
               name="images"

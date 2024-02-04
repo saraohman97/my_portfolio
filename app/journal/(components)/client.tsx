@@ -1,17 +1,11 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import Title from "@/components/ui/title";
-import prismadb from "@/lib/prismadb";
-import { format, set } from "date-fns";
-import Image from "next/image";
+import { format } from "date-fns";
 import { TbMoodEmpty } from "react-icons/tb";
 import PostItem from "./post-item";
 import { Post } from "@/types";
-import { useEffect, useState } from "react";
-import SidebarCategories from "./sidebar-categories";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useState } from "react";
 
 interface JournalClientProps {
   posts: Post[];
@@ -187,7 +181,7 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
   return (
     <>
       <div className="p-10 max-w-screen-xl mx-auto">
-        <Title title="Journal" />
+        <h1 className="text-center py-20 text-5xl my-10">Journal</h1>
 
         <div className="flex flex-row gap-20">
           <div className="w-2/3">
@@ -197,24 +191,26 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
                 Inga inlägg än <TbMoodEmpty size={24} />
               </p>
             )}
+
             {posts.map((article) => (
-                <div key={article.id}>
-                  {all && <PostItem article={article} />}
-                  {article.NextJS && NextJS && <PostItem article={article} />}
-                  {article.ReactJS && ReactJS && <PostItem article={article} />}
-                  {article.VanillaJS && VanillaJS && <PostItem article={article} />}
-                  {article.MongoDB && MongoDB && <PostItem article={article} />}
-                  {article.MySQL && MySQL && <PostItem article={article} />}
-                  {article.Prisma && Prisma && <PostItem article={article} />}
-                  {article.Mongoose && Mongoose && <PostItem article={article} />}
-                  {article.Shadcn && Shadcn && <PostItem article={article} />}
-                  {article.Tailwind && Tailwind && <PostItem article={article} />}
-                  {article.VanillaCSS && VanillaCSS && <PostItem article={article} />}
-                </div>
-              ))}
-            {/* {mongo && posts.map((article) => (
-                <PostItem article={article} key={article.id} />
-              ))} */}
+              <div key={article.id}>
+                {all && <PostItem article={article} />}
+                {article.NextJS && NextJS && <PostItem article={article} />}
+                {article.ReactJS && ReactJS && <PostItem article={article} />}
+                {article.VanillaJS && VanillaJS && (
+                  <PostItem article={article} />
+                )}
+                {article.MongoDB && MongoDB && <PostItem article={article} />}
+                {article.MySQL && MySQL && <PostItem article={article} />}
+                {article.Prisma && Prisma && <PostItem article={article} />}
+                {article.Mongoose && Mongoose && <PostItem article={article} />}
+                {article.Shadcn && Shadcn && <PostItem article={article} />}
+                {article.Tailwind && Tailwind && <PostItem article={article} />}
+                {article.VanillaCSS && VanillaCSS && (
+                  <PostItem article={article} />
+                )}
+              </div>
+            ))}
           </div>
 
           <div className="w-1/3 bg-slate-100 p-10 rounded h-fit">
@@ -266,12 +262,6 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
                   VanillaCSS
                 </Badge>
               </div>
-              {/* <SidebarCategories
-                setNextJS={setNextJS}
-              /> */}
-              {/* {categories.map((item) => (
-                  <Badge key={item.id}>{item.name}</Badge>
-                ))} */}
             </div>
 
             <hr className="my-6" />

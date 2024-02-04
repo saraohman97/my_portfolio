@@ -107,26 +107,3 @@ const skills = [
       "De ledande databashanterarna med öppen källkod är MongoDB och MySQL.",
   },
 ];
-
-// Fram till nyligen har jag använt mig av Mongoose som är byggt till databasen MongoDB. Mongoose är en noSQL datahanterare, till skillnad till prisma som är en SQL datahanterare. Structured Query Language, SQL, är ett standardiserat programspråk för att hämta och modifiera data i en relationsdatabas.
-
-// const projects = [
-//   {
-//     id: 1,
-//     image: "/architect/architect-web.png",
-//     name: "Hemsida",
-//     link: "",
-//   },
-//   {
-//     id: 2,
-//     image: "/portfolio.png",
-//     name: "Portfolio",
-//     link: "",
-//   },
-//   {
-//     id: 3,
-//     image: "/workblog.png",
-//     name: "Blogg",
-//     link: "https://my-work-blog-1b1cd.web.app",
-//   },
-// ];

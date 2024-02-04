@@ -17,7 +17,7 @@ export const BlogClient: React.FC<BlogClientProps> = ({ data }) => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center w-full text-center">
+      <div className="flex flex-col items-center justify-center w-full text-center">
         <Heading
           title="Journal"
           description="Här hittar du en lista av alla blogginlägg."
@@ -29,9 +29,9 @@ export const BlogClient: React.FC<BlogClientProps> = ({ data }) => {
           <Plus className="mr-2" /> Ny post
         </Button>
       </div>
-    <div className="max-w-screen-lg mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
+      <div className="max-w-screen-lg mx-auto py-10">
+        <DataTable columns={columns} data={data} />
+      </div>
     </>
   );
-}
+};

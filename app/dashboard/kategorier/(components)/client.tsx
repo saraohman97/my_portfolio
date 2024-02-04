@@ -17,7 +17,7 @@ export const BlogClient: React.FC<BlogClientProps> = ({ data }) => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center w-full text-center">
+      <div className="flex flex-col items-center justify-center w-full text-center">
         <Heading
           title="Kategorier"
           description="Här hittar du en lista av alla kategorier."
@@ -26,12 +26,12 @@ export const BlogClient: React.FC<BlogClientProps> = ({ data }) => {
           onClick={() => router.push("/dashboard/kategorier/ny")}
           className="self-end"
         >
-          <Plus className="mr-2" /> Ny post
+          <Plus className="mr-2" /> Ny kategori
         </Button>
       </div>
-    <div className="max-w-screen-lg mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
+      <div className="max-w-screen-lg mx-auto py-10">
+        <DataTable columns={columns} data={data} />
+      </div>
     </>
   );
-}
+};

@@ -16,7 +16,6 @@ export interface Post {
     text: string;
     favorite: boolean;
     images: Image[];
-    // categories: string[];
     createdAt: Date;
 
     NextJS: boolean;
