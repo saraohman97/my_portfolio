@@ -47,6 +47,5 @@ export interface Project {
 
 export interface ProjectImage {
     id: string;
-    title: string;
-    images: ProjectImage[]
+    url: string;
 }
