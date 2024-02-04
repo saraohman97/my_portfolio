@@ -27,6 +27,8 @@ import { Image, Post } from "@prisma/client";
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
+  imageDescription: z.string(),
+  preText: z.string(),
   text: z.string(),
   favorite: z.boolean().default(false).optional(),
   images: z.object({ url: z.string() }).array(),
@@ -64,6 +66,8 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
     : {
         title: "",
         description: "",
+        imageDescription: "",
+        preText: "",
         text: "",
         favorite: false,
         images: [],
@@ -147,6 +151,19 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                   <FormLabel>Beskrivning</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="preText"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Förklarande text</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -378,6 +395,20 @@ const BlogPage: React.FC<PostFormProps> = ({ initialData }) => {
                         ])
                       }
                     />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="imageDescription"
+              render={({ field }) => (
+                <FormItem className="mt-6">
+                  <FormLabel>Beskrivning till bilden</FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

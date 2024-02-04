@@ -13,6 +13,8 @@ export interface Post {
     id: string;
     title: string;
     description: string;
+    imageDescription: string;
+    preText: string;
     text: string;
     favorite: boolean;
     images: Image[];

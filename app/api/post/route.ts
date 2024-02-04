@@ -9,6 +9,8 @@ export async function POST(
         const {
             title,
             description,
+            imageDescription,
+            preText,
             text,
             favorite,
             images,
@@ -28,6 +30,8 @@ export async function POST(
             data: {
                 title,
                 description,
+                imageDescription,
+                preText,
                 text,
                 favorite,
                 images: {

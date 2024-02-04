@@ -16,6 +16,8 @@ const BlogPage = async () => {
     id: item.id,
     title: item.title,
     description: item.description,
+    imageDescription: item.imageDescription,
+    preText: item.preText,
     favorite: item.favorite,
     createdAt: format(item.createdAt, 'MMMM do, yyyy'),
     NextJS: item.NextJS,

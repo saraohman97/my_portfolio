@@ -87,9 +87,9 @@ const skills = [
       "År 2023 valde skaparna av Facebook att uppdatera deras rekommenderade Framework från ReactJS till NextJS. NextJS är ett Framework byggt ovanpå ReactJS för att ge ytterliga funktioner som server-side rendering och automatisk code splitting.",
   },
   {
-    label: "Tailwind CSS och Shadcn-ui",
+    label: "TailwindCSS och Shadcn/ui",
     content:
-      "Ett annan snabbt växande Framework är Tailwind CSS. Tailwind CSS gör livet så mycket enklare med snabb användning och prydlig placering. FÖr att mycket snabbare få upp en webbsida används oftast Shadcn-ui som ett tillägg med färdiga komponenter och funktionalitet.",
+      "Ett annan snabbt växande Framework är TailwindCSS. TailwindCSS gör livet så mycket enklare med snabb användning och prydlig placering. För att mycket snabbare få upp en webbsida använder jag oftast Shadcn-ui som kommer med färdigbyggda komponenter och funktionalitet.",
   },
   {
     label: "Prisma",
@@ -99,7 +99,7 @@ const skills = [
   {
     label: "TypeScript",
     content:
-      "TypeScript lägger till ytterligare syntax till JavaScript för att stödja en stramare integration med din editor. Den låter dig fånga fel tidigt i din editor.",
+      "TypeScript lägger till ytterligare syntax till JavaScript för att stödja en stramare integration med ens editor. Det vill säga, den låter mig fånga fel tidigt i min editor.",
   },
   {
     label: "MongoDB eller mySQl",

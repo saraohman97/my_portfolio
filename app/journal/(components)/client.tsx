@@ -23,6 +23,7 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
   const [Tailwind, setTailwind] = useState(false);
   const [VanillaCSS, setVanillaCSS] = useState(false);
   const [all, setAll] = useState(true);
+  const [nothing, setNothing] = useState(false)
 
   const toggleAll = () => {
     setNextJS(false);
@@ -184,7 +185,7 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
         <h1 className="text-center py-20 text-5xl my-10">Journal</h1>
 
         <div className="flex flex-row gap-20">
-          <div className="w-2/3">
+            <div className="w-2/3">
             {/* post */}
             {!posts.length && (
               <p className="flex gap-2">

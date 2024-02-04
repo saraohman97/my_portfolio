@@ -31,10 +31,11 @@ const PostItem: React.FC<PostItemProps> = ({ article }) => {
         {article.VanillaCSS && <Badge>VanillaCSS</Badge>}
       </div>
       <hr className="mt-5 mb-10" />
-      <p className="font-semibold">{article.text}</p>
+      {article.preText && (<p className="font-semibold mb-4">{article.preText}</p>)}
+      <p>{article.text}</p>
 
       <p className="pt-10 pl-10 text-sm text-slate-400">
-        Image: <span>Image descripton needs to be added</span>
+        Bild: <span>{article.imageDescription}</span>
       </p>
       <Image
         src={article.images[0]?.url}
