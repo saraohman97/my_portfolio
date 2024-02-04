@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Project, ProjectImage } from "@/types";
+import { Project } from "@/types";
 import Image from "next/image";
+import PortfolioItem from "./portfolio-item";
 
 interface PortfolioForm {
-    data: Project[];
+  data: Project[];
 }
 
 const PortfolioForm: React.FC<PortfolioForm> = ({ data }) => {
-    return ( 
-        <>
+  return (
+    <>
       <div className="flex flex-col items-center justify-center h-full relative">
         <Image
           src="/bg.png"
@@ -38,38 +38,21 @@ const PortfolioForm: React.FC<PortfolioForm> = ({ data }) => {
         </div>
       </div>
 
-        <div className="flex flex-col items-center gap-10 h-full">
-          <div className="text-2xl">Projekt</div>
+      <div className="flex flex-col items-center gap-10 h-full">
+        <div className="text-2xl">Projekt</div>
 
-          <div className="grid grid-cols-2 gap-10">
-            { data && data.map((project) => (
-              <div key={project.id}>
-                <a
-                  href={`https://${project.url}`}
-                  target="_blank"
-                  className="relative group cursor-pointer"
-                >
-                  <Image
-                    src={project.images[0].url}
-                    className="w-full group-hover:blur-sm shadow-xl max-h-[400px] object-cover"
-                    width={400}
-                    height={400}
-                    alt={project.title}
-                  />
-                  <div className="invisible top-0 right-0 bottom-0 left-0 flex items-center justify-center group-hover:absolute group-hover:visible">
-                    <Button>Gå till webbsidan</Button>
-                  </div>
-                </a>
-              </div>
+        <div className="grid grid-cols-2 gap-10">
+          {data &&
+            data.map((project) => (
+              <PortfolioItem key={project.id} project={project} />
             ))}
-          </div>
         </div>
-      </>
-     );
-}
- 
-export default PortfolioForm;
+      </div>
+    </>
+  );
+};
 
+export default PortfolioForm;
 
 const skills = [
   {
