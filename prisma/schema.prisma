@@ -73,11 +73,6 @@ model Project {
   images ProjectImage[]
 }
 
-model Category {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-}
-
 model Image {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   url    String

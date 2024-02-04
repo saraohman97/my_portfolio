@@ -16,12 +16,6 @@ const DashboardNavbar = () => {
       icon: CiPen,
     },
     {
-      href: "/dashboard/kategorier",
-      label: "Kategorier",
-      active: pathname === "/dashboard/kategorier",
-      icon: CiInboxIn,
-    },
-    {
       href: "/dashboard/projekt",
       label: "Projekt",
       active: pathname === "/dashboard/projekt",
