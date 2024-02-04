@@ -10,7 +10,7 @@ export type SafeUser = Omit<
 };
 
 
-export interface Post {
+export type Post = {
     id: string;
     title: string;
     description: string;
@@ -33,7 +33,7 @@ export interface Post {
     VanillaCSS: boolean;
 }
 
-export interface Image {
+export type Image = {
     id: string;
     url: string;
 }
