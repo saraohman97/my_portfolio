@@ -6,6 +6,7 @@ import { TbMoodEmpty } from "react-icons/tb";
 import PostItem from "./post-item";
 import { Post } from "@/types";
 import { useState } from "react";
+import {sv} from 'date-fns/locale'
 
 interface JournalClientProps {
   posts: Post[];
@@ -23,7 +24,6 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
   const [Tailwind, setTailwind] = useState(false);
   const [VanillaCSS, setVanillaCSS] = useState(false);
   const [all, setAll] = useState(true);
-  const [nothing, setNothing] = useState(false)
 
   const toggleAll = () => {
     setNextJS(false);
@@ -279,7 +279,7 @@ const JournalClient: React.FC<JournalClientProps> = ({ posts }) => {
                       {fav.favorite && fav.title}
                     </p>
                     <p className="text-sm text-slate-400">
-                      {fav.favorite && format(fav.createdAt, "MMMM do, yyyy")}
+                      {fav.favorite && format(fav.createdAt, "PPP", { locale: sv })}
                     </p>
                   </div>
                 ))}

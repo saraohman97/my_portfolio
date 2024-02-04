@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Post } from "@/types";
 import { format } from "date-fns";
 import Image from "next/image";
+import { sv } from "date-fns/locale";
 
 interface PostItemProps {
   article: Post;
@@ -14,7 +15,7 @@ const PostItem: React.FC<PostItemProps> = ({ article }) => {
       <div className="flex items-center justify-between">
         <p className="text-slate-400 text-sm my-2">{article.description}</p>
         <p className="text-slate-400 text-sm">
-          {format(article.createdAt, "MMMM do, yyyy")}
+          {format(article.createdAt, "PPP", { locale: sv })}
         </p>
       </div>
       {/* collection */}
@@ -31,7 +32,9 @@ const PostItem: React.FC<PostItemProps> = ({ article }) => {
         {article.VanillaCSS && <Badge>VanillaCSS</Badge>}
       </div>
       <hr className="mt-5 mb-10" />
-      {article.preText && (<p className="font-semibold mb-4">{article.preText}</p>)}
+      {article.preText && (
+        <p className="font-semibold mb-4">{article.preText}</p>
+      )}
       <p>{article.text}</p>
 
       <p className="pt-10 pl-10 text-sm text-slate-400">
