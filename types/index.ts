@@ -9,7 +9,6 @@ export type SafeUser = Omit<
     emailVerified: string | null;
 };
 
-
 export type Post = {
     id: string;
     title: string;
