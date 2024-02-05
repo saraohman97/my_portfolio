@@ -9,7 +9,6 @@ export type TableProject = {
   id: string;
   title: string;
   url: string;
-  createdAt: string;
 };
 
 export const columns: ColumnDef<TableProject>[] = [
@@ -20,10 +19,6 @@ export const columns: ColumnDef<TableProject>[] = [
   {
     accessorKey: "url",
     header: "Link",
-  },
-  {
-    accessorKey: "createdAt",
-    header: "Datum skapat",
   },
   {
     id: "actions",

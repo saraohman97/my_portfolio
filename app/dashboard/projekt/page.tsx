@@ -12,16 +12,9 @@ const ProjectsPage = async () => {
     },
   });
 
-  const formattedProjects: TableProject[] = projects.map((item) => ({
-    id: item.id,
-    title: item.title,
-    url: item.url,
-    createdAt: format(item.createdAt, 'MMMM do, yyyy'),
-  }))
-
   return (
     <>
-        <ProjectsClient data={formattedProjects} />
+        <ProjectsClient data={projects} />
     </>
   );
 };
