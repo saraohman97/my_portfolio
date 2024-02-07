@@ -16,6 +16,7 @@ model User {
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+  role           Role      @default(USER)
 
   accounts Account[]
 }
@@ -89,4 +90,9 @@ model ProjectImage {
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([projectId])
+}
+
+enum Role {
+  USER
+  ADMIN
 }

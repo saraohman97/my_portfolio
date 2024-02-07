@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             </DialogContent>
           </Dialog> */}
 
-          {currentUser ? (
+          {currentUser && currentUser.role === 'ADMIN' ? (
             <>
               <Link href="/dashboard/blogg">
                 <Button variant='link'>Dashboard</Button>

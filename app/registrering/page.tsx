@@ -24,6 +24,7 @@ const formSchema = z.object({
   name: z.string().min(2).max(50),
   email: z.string().min(2).max(50),
   password: z.string().min(2).max(50),
+  role: z.string()
 });
 
 const RegisterPage = () => {
@@ -37,6 +38,7 @@ const RegisterPage = () => {
       name: "",
       email: "",
       password: "",
+      role: "USER"
     },
   });
 

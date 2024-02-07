@@ -36,7 +36,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ toggleModal }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      password: "",
+      password: ""
     },
   });
 
