@@ -42,7 +42,7 @@ const PortfolioForm: React.FC<PortfolioForm> = ({ data }) => {
           <div className="text-2xl">Projekt</div>
 
           <div className="grid grid-cols-2 gap-10">
-            {data.map((project) => (
+            {data.length && data.map((project) => (
                 <PortfolioItem key={project.id} project={project} />
               ))}
           </div>
