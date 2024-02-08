@@ -10,7 +10,9 @@ export default async function getPosts() {
                 createdAt: "desc"
             }
         })
-        return posts
+        if(posts) {
+            return posts
+        }
     } catch (error: any) {
         throw new Error(error)
     }

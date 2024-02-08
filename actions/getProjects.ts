@@ -10,7 +10,9 @@ export default async function getProjects() {
                 createdAt: "desc"
             }
         })
-        return projects
+        if(projects) {
+            return projects
+        }
     } catch (error: any) {
         throw new Error(error)
     }
