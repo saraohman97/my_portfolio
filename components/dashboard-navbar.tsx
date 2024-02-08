@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CgWebsite } from "react-icons/cg";
-import { CiInboxIn, CiPen } from "react-icons/ci";
+import { CiPen } from "react-icons/ci";
 
 const DashboardNavbar = () => {
   const pathname = usePathname();

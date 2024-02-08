@@ -24,25 +24,21 @@ const formSchema = z.object({
   name: z.string().min(2).max(50),
   email: z.string().min(2).max(50),
   password: z.string().min(2).max(50),
-  role: z.string()
 });
 
 const RegisterPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      role: "USER"
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 

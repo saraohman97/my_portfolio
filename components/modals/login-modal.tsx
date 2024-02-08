@@ -31,7 +31,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ toggleModal }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,7 +39,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ toggleModal }) => {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
 

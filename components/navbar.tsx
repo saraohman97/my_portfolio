@@ -39,23 +39,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             <Button variant="link">Journal</Button>
           </Link>
 
-          {/* <Dialog open={open} onOpenChange={toggleModal}>
-            <DialogTrigger asChild>
-              <Button variant="outline">Register</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Registrera</DialogTitle>
-                <DialogDescription>
-                  Make changes to your profile here. Click save when youre
-                  done.
-                </DialogDescription>
-              </DialogHeader>
-
-              <RegisterModal toggleModal={toggleModal} />
-            </DialogContent>
-          </Dialog> */}
-
           {currentUser && currentUser.role === 'ADMIN' ? (
             <>
               <Link href="/dashboard/blogg">
