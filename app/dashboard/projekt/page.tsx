@@ -1,16 +1,10 @@
 
-import prismadb from "@/lib/prismadb";
-import { format } from 'date-fns'
-import { TableProject } from "./(components)/columns";
 import { ProjectsClient } from "./(components)/client";
+import getProjects from "@/actions/getProjects";
 
 const ProjectsPage = async () => {
 
-  const projects = await prismadb.project.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const projects = await getProjects()
 
   return (
     <>

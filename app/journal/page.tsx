@@ -1,15 +1,8 @@
-import prismadb from "@/lib/prismadb";
 import JournalClient from "./(components)/client";
+import getPosts from "@/actions/getPosts";
 
 const JournalPage = async () => {
-  const posts = await prismadb.post.findMany({
-    include: {
-      images: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const posts = await getPosts()
 
   return <JournalClient posts={posts} />;
 };

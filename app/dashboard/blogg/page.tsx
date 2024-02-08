@@ -1,12 +1,8 @@
-import prismadb from "@/lib/prismadb";
 import { BlogClient } from "./(components)/client";
+import getPosts from "@/actions/getPosts";
 
 const BlogPage = async () => {
-  const posts = await prismadb.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const posts = await getPosts()
 
   return (
     <>

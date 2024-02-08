@@ -1,16 +1,9 @@
-import prismadb from "@/lib/prismadb";
 import Footer from "@/components/footer";
 import PortfolioForm from "./(components)/portfolio-form";
+import getProjects from "@/actions/getProjects";
 
 const HomeClient = async () => {
-  const projects = await prismadb.project.findMany({
-    include: {
-      images: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const projects = await getProjects()
 
   return (
     <>
