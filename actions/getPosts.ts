@@ -10,6 +10,8 @@ export default async function getPosts() {
                 createdAt: "desc"
             }
         })
+        if(!posts) return null;
+        
         if(posts) {
             return posts
         }

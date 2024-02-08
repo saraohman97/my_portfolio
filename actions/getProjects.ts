@@ -10,6 +10,8 @@ export default async function getProjects() {
                 createdAt: "desc"
             }
         })
+        if(!projects) return null;
+        
         if(projects) {
             return projects
         }
