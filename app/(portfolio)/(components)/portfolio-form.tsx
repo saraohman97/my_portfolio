@@ -37,17 +37,17 @@ const PortfolioForm: React.FC<PortfolioForm> = ({ data }) => {
           ))}
         </div>
       </div>
+      {data.length && (
+        <div className="flex flex-col items-center gap-10 h-full">
+          <div className="text-2xl">Projekt</div>
 
-      <div className="flex flex-col items-center gap-10 h-full">
-        <div className="text-2xl">Projekt</div>
-
-        <div className="grid grid-cols-2 gap-10">
-          {data &&
-            data.map((project) => (
-              <PortfolioItem key={project.id} project={project} />
-            ))}
+          <div className="grid grid-cols-2 gap-10">
+            {data.map((project) => (
+                <PortfolioItem key={project.id} project={project} />
+              ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
